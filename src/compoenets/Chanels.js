@@ -19,12 +19,13 @@ function Channels({
              <span className="channel-name">Loading channels....</span>
            </li>
          ) : channels.length ? (
-           channels.map((c) => {
+           channels.filter(el=>el.name!==nickname).map((c) => {
              return (
+              
                <li
                  key={c.id}
                  onClick={() => setChannel(c.name)}
-                 className={c.name === channel ? "active" : ""}
+                 className={c.name === channel  ? "active" : ""}
                >
                  <span className="channel-name">{c.name}</span>
                </li>

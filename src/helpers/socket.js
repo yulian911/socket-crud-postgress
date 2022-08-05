@@ -49,6 +49,37 @@ export const fetchChannelMessages = async (channel) => {
  const response = await axios.get(
    `${SOCKET_URL}/channels/${channel}/messages`
  );
+ 
 
  return response.data;
 };
+
+// notification
+
+export const subscribeToNotification = (callback) => {
+  if (!socket) {
+    return;
+  }
+ 
+  socket.on("NEW_NOTIFICATION", (data) => {
+    callback(null, data);
+  });
+ };
+
+
+export const sendNotification = (data) => {
+
+  if (!socket) {
+    return;
+  }
+  socket.emit("NOTIFICATION_SEND", data);
+ };
+
+export const fetchChannelNotification = async (channel) => {
+  const response = await axios.get(
+    `${SOCKET_URL}/channels/${channel}/notification`
+  );
+  
+ 
+  return response.data;
+ };

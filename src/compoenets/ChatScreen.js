@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import MessageForm from "./MessageForm";
 
@@ -16,6 +17,15 @@ function ChatScreen({
 }) {
 
   console.log(nickname)
+
+  const scrollRef =useRef()
+
+  // const ScrollBar=()=>{
+  //   scrollRef?.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  // }
+  // useEffect(()=>{
+  //   ScrollBar()
+  // },[])
  return (
    <section className="chat-screen">
      <header className="chat-header">
@@ -24,7 +34,7 @@ function ChatScreen({
      {/* <ChatMessages messagesLoading={messagesLoading} messages={messages} /> */}
           <Message>
             {messages.map((el)=>(
-              <div className={nickname===el.user?"sended":"recieved "}>
+              <div ref={scrollRef} className={nickname===el.user?"sended":"recieved "}>
                 <div className="content">
                   <p >{el.user}</p>
                   <p>{el.body}</p>
@@ -59,6 +69,8 @@ const Message =styled.div`
 display: flex;
 flex-direction: column;
 padding:0 50px;
+height: 700px;
+overflow: scroll;
 
 .sended {
   display:flex;

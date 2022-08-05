@@ -2,33 +2,33 @@ import React, { useState } from 'react'
 import Chat from './Chat';
 import LoginDialog from './LoginDialog';
 
-const ChatContainer = () => {
-  const [nickname, setNickname] = useState("");
+const ChatContainer = ({nickname}) => {
+  // const [nickname, setNickname] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
 
-  const handleNicknameChange = (event) => {
-    setNickname(event.target.value.trim());
-  };
+  // const handleNicknameChange = (event) => {
+  //   setNickname(event.target.value.trim());
+  // };
  
-  const handleNicknameSubmit = (e) => {
-    if (!nickname.length) return;
+  // const handleNicknameSubmit = (e) => {
+  //   if (!nickname.length) return;
  
-    e.preventDefault();
+  //   e.preventDefault();
  
-    setLoggedIn(true);
-  };
+  //   setLoggedIn(true);
+  // };
   return (
     <div className="main-div">
-     {!loggedIn ? (
+     {/* {!loggedIn ? (
        <LoginDialog
          nicknameChange={handleNicknameChange}
          nicknameSubmit={handleNicknameSubmit}
        />
      ) : 
-     (
+     ( */}
        <Chat nickname={nickname} />
-     )}
+     {/* )} */}
    </div>
   )
 }

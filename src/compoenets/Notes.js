@@ -121,7 +121,7 @@ console.table(notes)
             </div>
             <div style={{display:'flex',flexDirection:'row',justifyContent: 'space-around',alignItems: 'center'}}>
               <div >
-                {edit ?<button onClick={handleCancel}>ANULUJ</button>:<button onClick={()=>handleChangeState(el.id)}>UPDATE</button>}
+                {edit && getId ===el.id ?<button onClick={handleCancel}>ANULUJ</button>:<button onClick={()=>handleChangeState(el.id)}>UPDATE</button>}
               </div>
               <div 
               onClick={()=>deliteNote(el.id)}
